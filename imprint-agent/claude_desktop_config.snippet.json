@@ -1,0 +1,17 @@
+{
+  "_comment": "Add the 'imprint' entry into the mcpServers object of your Claude Desktop / Claude Code config. EDIT the absolute path to match where you cloned this repo. Keep `npm run http` running in a terminal — the tools call it. Restart Claude after editing. (Production alternative: run `npm run build` and point command=node args=[...build/src/mcp/server.js].)",
+  "mcpServers": {
+    "imprint": {
+      "command": "npx",
+      "args": [
+        "tsx",
+        "C:\\Users\\lenovo\\Downloads\\claude skills plugin\\imprint-agent\\src\\mcp\\server.ts"
+      ],
+      "env": {
+        "IMPRINT_MODE": "mock",
+        "IMPRINT_API_BASE": "http://localhost:4021",
+        "EMBEDDER": "mock"
+      }
+    }
+  }
+}
