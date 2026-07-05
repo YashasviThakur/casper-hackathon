@@ -55,17 +55,17 @@ export default function HeroSection() {
           className="text-7xl md:text-8xl lg:text-9xl text-white tracking-tight leading-none"
           style={{ fontFamily: "'Instrument Serif', serif" }}
         >
-          Leave an{" "}
+          Your agent{" "}
           <em
             className="italic font-light text-transparent bg-clip-text"
             style={{ backgroundImage: "linear-gradient(135deg, #d4a85a 0%, #b8864a 50%, #9e6e3a 100%)" }}
-          >imprint</em>
-          {" "}your agent{" "}
+          >pays</em>
+          {" "}to{" "}
           <span
             className="text-transparent bg-clip-text"
             style={{ backgroundImage: "linear-gradient(135deg, #5bbfb0 0%, #3d9e90 50%, #2a7a6e 100%)" }}
           >
-            pays for.
+            remember.
           </span>
         </h1>
 
