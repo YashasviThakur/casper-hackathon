@@ -67,7 +67,9 @@ to real Casper testnet — the code path is identical. See
 
 - Backend deep-dive: [`imprint-agent/README.md`](./imprint-agent/README.md)
 - Mock → real Casper: [`imprint-agent/SETUP.md`](./imprint-agent/SETUP.md)
-- Demo video script: [`imprint-agent/DEMO.md`](./imprint-agent/DEMO.md)
+- Submission summary: [`SUBMISSION.md`](./SUBMISSION.md)
+- Demo video script (word-for-word): [`VIDEO-SCRIPT.md`](./VIDEO-SCRIPT.md)
+- Deploy to Vercel: [`DEPLOY.md`](./DEPLOY.md)
 
 ## License
 
