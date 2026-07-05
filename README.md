@@ -5,6 +5,8 @@
 
 **Casper Agentic Buildathon 2026** submission · Agentic AI / x402 track.
 
+🌐 **Live site:** https://imprint-x402.vercel.app
+
 Most x402 demos sell API calls or data. **Imprint sells the one thing an autonomous
 agent can't function without and can't currently buy: memory.** An agent that can't
 remember can't act coherently over time — so Imprint turns memory into a metered,

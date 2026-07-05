@@ -62,6 +62,11 @@ receipts stream in with tx hashes and "settled" pills.
 - ⏳ **Real on-chain settlement** flips on with one env var (`IMPRINT_MODE=real`) once the
   hackathon facilitator token + accepted CEP-18 asset are in hand — the code path is identical.
 
+## Live site
+**https://imprint-x402.vercel.app** — the landing page + the interactive x402 demo widget
+("Run the full demo"). On the hosted site the widget runs in simulated mode; run the
+backend locally (or host it, see DEPLOY.md) for real receipts.
+
 ## Repo
 https://github.com/YashasviThakur/casper-hackathon
 
