@@ -4,6 +4,7 @@ import { makeFacilitator } from '../casper/index.js';
 import { makeEmbedder } from '../memory/embedder.js';
 import { MemoryStore } from '../memory/memory-store.js';
 import { paymentGate } from '../x402/server-middleware.js';
+import { payAndFetch } from '../x402/client.js';
 
 /**
  * Express 4 does NOT catch rejected promises from async handlers/middleware, so
@@ -27,6 +28,19 @@ async function main(): Promise<void> {
 
   const app = express();
   app.use(express.json());
+
+  // Open CORS so the website's live-demo widget (a different origin) can call the
+  // /demo helpers and /healthz from the browser.
+  app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'content-type');
+    if (req.method === 'OPTIONS') {
+      res.sendStatus(204);
+      return;
+    }
+    next();
+  });
 
   app.get('/healthz', (_req, res) => {
     res.json({ ok: true, mode: config.mode, embedder: embedder.id, dim: embedder.dim, count: store.count() });
@@ -80,6 +94,64 @@ async function main(): Promise<void> {
         return;
       }
       res.json({ id: rec.id, text: rec.text, meta: rec.meta, receipt: res.locals.payment });
+    }),
+  );
+
+  // ── Demo helpers for the website widget ──────────────────────────────────
+  // These run the FULL, REAL x402 pay-and-fetch (402 → sign → verify → settle →
+  // store/recall) internally and return the receipt, so the browser can trigger
+  // a genuine paid memory op without implementing the x402 client itself.
+  const selfBase = `http://127.0.0.1:${config.port}`;
+
+  app.post(
+    '/demo/store',
+    asyncHandler(async (req, res) => {
+      const text = String(req.body?.text ?? '').trim();
+      if (!text) {
+        res.status(400).json({ error: 'text is required' });
+        return;
+      }
+      const { data, settlement } = await payAndFetch<{ id: string; receipt: any }>({
+        method: 'POST',
+        url: `${selfBase}/memories`,
+        body: { text },
+        facilitator,
+      });
+      res.json({
+        op: 'store',
+        id: data.id,
+        text,
+        amount: data.receipt.amount,
+        network: data.receipt.network,
+        payer: data.receipt.payer,
+        tx: settlement?.transaction ?? data.receipt.tx,
+      });
+    }),
+  );
+
+  app.post(
+    '/demo/recall',
+    asyncHandler(async (req, res) => {
+      const query = String(req.body?.query ?? '').trim();
+      if (!query) {
+        res.status(400).json({ error: 'query is required' });
+        return;
+      }
+      const { data, settlement } = await payAndFetch<{ results: Array<{ text: string; score: number }>; receipt: any }>({
+        method: 'POST',
+        url: `${selfBase}/memories/search`,
+        body: { query, topK: 3 },
+        facilitator,
+      });
+      res.json({
+        op: 'recall',
+        query,
+        results: data.results,
+        amount: data.receipt.amount,
+        network: data.receipt.network,
+        payer: data.receipt.payer,
+        tx: settlement?.transaction ?? data.receipt.tx,
+      });
     }),
   );
 
