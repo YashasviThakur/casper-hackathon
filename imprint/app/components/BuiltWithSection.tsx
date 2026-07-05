@@ -177,7 +177,7 @@ export default function BuiltWithSection() {
             View source on GitHub
           </a>
           <a
-            href="#install"
+            href="#try"
             className="text-white/35 hover:text-white/65 text-sm transition-colors"
           >
             See how it works →

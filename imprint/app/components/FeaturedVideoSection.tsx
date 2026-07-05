@@ -41,7 +41,7 @@ export default function FeaturedVideoSection() {
             </div>
 
             <motion.a
-              href="#install"
+              href="#try"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="liquid-glass rounded-full px-8 py-3 text-white text-sm font-medium flex-shrink-0 cursor-pointer"

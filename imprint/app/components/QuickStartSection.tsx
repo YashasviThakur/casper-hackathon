@@ -49,7 +49,7 @@ export default function QuickStartSection() {
               </h2>
             </div>
             <a
-              href="#install"
+              href="#try"
               className="flex items-center gap-3 rounded-full px-6 py-3 text-sm font-medium self-start md:self-auto group transition-all"
               style={{
                 background: "rgba(207,143,109,0.12)",

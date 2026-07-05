@@ -76,7 +76,7 @@ export default function HeroSection() {
         {/* Primary CTA */}
         <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
           <a
-            href="#install"
+            href="#try"
             className="liquid-glass rounded-full pl-6 pr-2 py-2 flex items-center gap-4 hover:bg-white/5 transition-colors group"
           >
             <span className="text-white text-sm font-medium">

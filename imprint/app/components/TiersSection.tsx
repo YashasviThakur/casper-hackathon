@@ -11,7 +11,7 @@ const TIERS = [
     description:
       "Imprint charges a CSPR micro-amount each time your agent saves or recalls a memory — settled on Casper via x402. No subscription, no human billing, no API keys. The agent signs, pays, and gets its context.",
     cta: "See how it settles →",
-    href: "#install",
+    href: "#try",
     accent: "#4eecd8",
     detail: "x402 · settled on Casper",
     steps: [
@@ -28,7 +28,7 @@ const TIERS = [
     description:
       "Install the MCP server once. Any agent that speaks MCP gets paid-memory tools; each call settles on Casper. Set IMPRINT_MODE and go.",
     cta: "Install MCP →",
-    href: "#install",
+    href: "#try",
     accent: "#cf8f6d",
     detail: "Claude Code · Cursor · Codex · any MCP agent",
     steps: [

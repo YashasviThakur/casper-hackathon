@@ -8,7 +8,6 @@ import ServicesSection from "./components/ServicesSection";
 import BuiltWithSection from "./components/BuiltWithSection";
 import BackgroundVideo from "./components/BackgroundVideo";
 import TiersSection from "./components/TiersSection";
-import InstallSection from "./components/InstallSection";
 import QuickStartSection from "./components/QuickStartSection";
 import LiveDemoSection from "./components/LiveDemoSection";
 
@@ -26,7 +25,6 @@ export default function Home() {
         <QuickStartSection />
         <AboutSection />
         <TiersSection />
-        <InstallSection />
         <FeaturedVideoSection />
         <PhilosophySection />
         <BuiltWithSection />
